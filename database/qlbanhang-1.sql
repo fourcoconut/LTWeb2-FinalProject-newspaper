@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 24, 2020 lúc 08:28 AM
+-- Thời gian đã tạo: Th7 02, 2020 lúc 10:53 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.2.28
 
@@ -30,7 +30,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bao` (
   `idbao` int(11) NOT NULL,
-  `tieude` text COLLATE utf8_unicode_ci NOT NULL,
+  `tieude` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `noidung` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `noidungchinh` text COLLATE utf8_unicode_ci NOT NULL,
   `ngaydang` date NOT NULL DEFAULT current_timestamp(),
   `slxem` int(11) NOT NULL,
   `slbinhluan` int(11) NOT NULL,
@@ -38,6 +40,14 @@ CREATE TABLE `bao` (
   `idchuyenmuc` int(11) NOT NULL,
   `tacgia` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `bao`
+--
+
+INSERT INTO `bao` (`idbao`, `tieude`, `noidung`, `noidungchinh`, `ngaydang`, `slxem`, `slbinhluan`, `loaibao`, `idchuyenmuc`, `tacgia`) VALUES
+(1, 'báo nháp', 'tháng 9 này sinh viên 1760198 sẻ tốt nghiệp', '', '2020-07-01', 3, 3, 'dasdasdasdasdasdasda', 1, 'dasdasdasdasdasdasdasdasdasd'),
+(2, 'báo nháp tiếp', 'sinh viên 1760265 sẻ rớt môn web', '', '2020-07-02', 31, 45, 'rweuiryweiu', 1, 'sgdfsgsdfgds');
 
 -- --------------------------------------------------------
 
@@ -47,7 +57,9 @@ CREATE TABLE `bao` (
 
 CREATE TABLE `baochoduyet` (
   `idbaocd` int(11) NOT NULL,
-  `tieudecd` text COLLATE utf8_unicode_ci NOT NULL,
+  `tieudecd` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `noidungcd` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `noidungchinhcd` text COLLATE utf8_unicode_ci NOT NULL,
   `loaibaocd` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `idchuyenmuccd` int(11) NOT NULL,
   `nguoiviet` varchar(100) COLLATE utf8_unicode_ci NOT NULL
@@ -84,10 +96,10 @@ CREATE TABLE `chuyenmuc` (
 
 INSERT INTO `chuyenmuc` (`idchuyenmuc`, `idtheloai`, `tenchuyenmuc`) VALUES
 (1, 1, 'Trong Nước'),
-(2, 1, 'Nước Ngoài'),
-(3, 2, 'Nông Sản'),
-(4, 2, 'Thủy Sản'),
-(5, 3, 'Game'),
+(2, 2, 'Nông Sản'),
+(3, 3, 'Game'),
+(4, 1, 'Nước Ngoài'),
+(5, 2, 'Thủy Sản'),
 (6, 3, 'Điện Thoại');
 
 -- --------------------------------------------------------
@@ -100,6 +112,16 @@ CREATE TABLE `loaitaikhoan` (
   `idloaitk` int(11) NOT NULL,
   `loaitk` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `loaitaikhoan`
+--
+
+INSERT INTO `loaitaikhoan` (`idloaitk`, `loaitk`) VALUES
+(1, 'Người Dùng'),
+(2, 'Người Dùng Vip'),
+(3, 'Nhà Báo'),
+(4, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -158,6 +180,12 @@ ALTER TABLE `bao`
   ADD PRIMARY KEY (`idbao`);
 
 --
+-- Chỉ mục cho bảng `baochoduyet`
+--
+ALTER TABLE `baochoduyet`
+  ADD PRIMARY KEY (`idbaocd`);
+
+--
 -- Chỉ mục cho bảng `binhluan`
 --
 ALTER TABLE `binhluan`
@@ -195,13 +223,43 @@ ALTER TABLE `theloaibao`
 -- AUTO_INCREMENT cho bảng `bao`
 --
 ALTER TABLE `bao`
-  MODIFY `idbao` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idbao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `baochoduyet`
+--
+ALTER TABLE `baochoduyet`
+  MODIFY `idbaocd` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `binhluan`
 --
 ALTER TABLE `binhluan`
   MODIFY `idbinhluan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `chuyenmuc`
+--
+ALTER TABLE `chuyenmuc`
+  MODIFY `idchuyenmuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `loaitaikhoan`
+--
+ALTER TABLE `loaitaikhoan`
+  MODIFY `idloaitk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `taikhoan`
+--
+ALTER TABLE `taikhoan`
+  MODIFY `idtk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `theloaibao`
+--
+ALTER TABLE `theloaibao`
+  MODIFY `idtheloaibao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
