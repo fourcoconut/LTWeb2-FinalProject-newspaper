@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Chuyên Mục</h4>
+    </div>
+    {{#if this.empty}}
+    <div class="card-body">
+        <h5>Không có dữ liệu.</h5>
+    </div>
+    {{else}}
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên Chuyên Mục</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this.CMuc}}
+            <tr>
+                <td scope="row">{{idchuyenmuc}}</td>
+                <td>{{tenchuyenmuc}}</td>
+                <td class="text-right">
+                    <a class="btn btn-primary btn-sm" href="#" role="button">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="#" role="button">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{/if}}
+    <div class="card-footer text-muted">
+        <p>Nhóm Sinh Viên KHTN</p>
+    </div>
+</div>
