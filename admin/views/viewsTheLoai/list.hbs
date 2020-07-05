@@ -1,6 +1,10 @@
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex justify-content-between">
         <h4>Thể Loại</h4>
+        <a class="btn btn-outline-success" href="/admin/TheLoai/add" role="button">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Thêm Thể Loại
+        </a>
     </div>
     {{#if this.empty}}
     <div class="card-body">
@@ -21,11 +25,8 @@
                 <td scope="row">{{idtheloaibao}}</td>
                 <td>{{tentheloai}}</td>
                 <td class="text-right">
-                    <a class="btn btn-primary btn-sm" href="#" role="button">
+                    <a class="btn btn-primary btn-sm" href="/admin/TheLoai/edit?id={{idtheloaibao}}" role="button" title="Chỉnh sữa">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </a>
-                    <a class="btn btn-danger btn-sm" href="#" role="button">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>

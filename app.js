@@ -1,7 +1,12 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const { stack } = require('./admin/routes/bao.route');
 
 const app = express();
+
+app.use(express.urlencoded({
+    extended: true
+}));
 
 app.engine('hbs', exphbs());
 app.set('view engine', 'hbs');
@@ -25,6 +30,15 @@ app.use('/admin/bao', require('./admin/routes/bao.route'));
 app.use('/admin/CMuc', require('./admin/routes/chuyenmuc.route'));
 app.use('/admin/baoCD', require('./admin/routes/baocd.route'));
 app.use('/admin/TheLoai', require('./admin/routes/theloai.route'));
+
+app.use(function (req, res) {
+    res.render('404', { layout: false });
+  })
+
+app.use(function (err, req, res, next){
+    console.error(err.stack);
+    res.status(500).render('500', { layout: false});
+})
 
 const PORT = 3000;
 

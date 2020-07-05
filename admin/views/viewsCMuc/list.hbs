@@ -1,6 +1,10 @@
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex justify-content-between">
         <h4>Chuyên Mục</h4>
+        <a class="btn btn-outline-success" href="/admin/CMuc/add" role="button">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Thêm Chuyên Mục
+        </a>
     </div>
     {{#if this.empty}}
     <div class="card-body">
@@ -11,6 +15,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Tên Thể Loại</th>
                 <th scope="col">Tên Chuyên Mục</th>
                 <th scope="col">&nbsp;</th>
             </tr>
@@ -19,12 +24,13 @@
             {{#each this.CMuc}}
             <tr>
                 <td scope="row">{{idchuyenmuc}}</td>
+                <td></td>
                 <td>{{tenchuyenmuc}}</td>
                 <td class="text-right">
-                    <a class="btn btn-primary btn-sm" href="#" role="button">
+                    <a class="btn btn-primary btn-sm" href="/admin/CMuc/add" role="button" title="Chỉnh sữa">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
-                    <a class="btn btn-danger btn-sm" href="#" role="button">
+                    <a class="btn btn-danger btn-sm" href="#" role="button" title="Xóa">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>
