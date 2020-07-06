@@ -4,7 +4,10 @@ const TBL_THELOAI = 'theloaibao';
 
 module.exports = {
     all: function () {
-        return db.load('select * from theloaibao');
+        return db.load(`select * from ${TBL_THELOAI}`);
+    },
+    allTLANDCM: function () {
+      return db.load(`select tl.*, cm.*,cm1.tenchuyenmuc as tenchuyenmuc1 from theloaibao tl join chuyenmuc cm on tl.idtheloaibao = cm.idtheloai join chuyenmuc cm1 on cm.idtheloai = cm1.idtheloai where cm.tenchuyenmuc != cm1.tenchuyenmuc limit 0, 3`);
     },
     single: function (id) {
         return db.load(`select * from ${TBL_THELOAI} where idtheloaibao = ${id}`);
