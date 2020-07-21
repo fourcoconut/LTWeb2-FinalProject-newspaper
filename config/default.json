@@ -3,11 +3,14 @@
     "host": "localhost",
     "port": 3306,
     "user": "root",
-    "password": "",
+    "password": "01633457754",
     "database": "qlbanhang",
     "connectionLimit": 50
   },
   "pagination": {
     "limit": 6
+  },
+  "authentication": {
+    "saltRounds": 8
   }
 }

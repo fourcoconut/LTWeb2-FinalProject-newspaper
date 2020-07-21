@@ -4,10 +4,10 @@ const TBL_CHUYENMUC = 'chuyenmuc';
 
 module.exports = {
     all: function () {
-        return db.load('select * from chuyenmuc');
+        return db.load(`select * from ${TBL_CHUYENMUC}`);
     },
     LayIDTL: function () {
-      return db.load(`select idtheloai from chuyenmuc where idchuyenmuc = ${id}`);
+      return db.load(`select idtheloai from ${TBL_CHUYENMUC} where idchuyenmuc = ${id}`);
     },
     single: function (id) {
         return db.load(`select * from ${TBL_CHUYENMUC} where CatID = ${id}`);

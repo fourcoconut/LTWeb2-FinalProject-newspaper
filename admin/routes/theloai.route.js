@@ -25,8 +25,8 @@ router.post('/add', async function(req, res){
   res.redirect("/admin/TheLoai");
 })
 
-router.get('/edit', async function(req, res){
-    const id = +req.query.id || -1;
+router.get('/edit/:id', async function(req, res){
+    const id = +req.params.id || -1;
     const rows = await TheLoaiModel.single(id);
     if (rows.length === 0)
         return res.send('Invalid parameter.');
