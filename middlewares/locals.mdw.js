@@ -1,4 +1,4 @@
-const TLoaiModel = require('../admin/models/theloai.model');
+const TLoaiModel = require('../models/theloai.model');
 
 module.exports = function (app) {
     app.use(function (req, res, next) {

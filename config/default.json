@@ -8,7 +8,8 @@
     "connectionLimit": 50
   },
   "pagination": {
-    "limit": 6
+    "limit": 4,
+    "limitTC": 10
   },
   "authentication": {
     "saltRounds": 8

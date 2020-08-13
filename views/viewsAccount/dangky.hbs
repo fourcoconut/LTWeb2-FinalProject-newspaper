@@ -14,14 +14,44 @@
   });
 
   $('#frmRegister').on('submit', function (e) {
-    // alert('submit called');
     e.preventDefault();
-    if (validate())
-      $('#frmRegister').off('submit').submit();
+    
+      validate();
   })
 
   function validate() {
-    return true;
+   const user = $('#txtUsername').val();
+   const email = $('#txtEmail').val();
+   let pass = $('#txtPassword').val();
+   let pass1 = $('#txtConfirm').val();
+   let count = pass.length;
+   let user1 = $('#txtUsername').val();
+   let count1 = user1.length;
+    $.getJSON(`/taikhoan/kiemtra/user?user=${user}`, function (data) {
+      if (data === true) {
+        $.getJSON(`/taikhoan/kiemtra/gmail?email=${email}`, function (data) {
+          if (data === true) {
+            if(count > 3 && count < 15){
+              if(count1 > 5 && count1 < 21){
+                if(pass === pass1){
+                  $('#frmRegister').off('submit').submit();
+                } else {
+                  alert('Nhập lại mật khẩu không trùng khớp!!!!!');
+                }
+              } else {
+                alert('Độ dài tài khoản không hợp lệ!!!!!');
+              }
+            } else {
+              alert('Độ dài mật khẩu không hợp lệ!!!!!');
+            }
+          } else {
+            alert('Gmail này đã tồn tại!!!!!');
+          }
+        })
+      } else {
+        alert('Tài khoản này đã tồn tại!!!!!');
+      }
+    })
   }
 </script>
 {{/section}}

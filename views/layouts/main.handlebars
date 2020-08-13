@@ -22,19 +22,25 @@
                 {{tentheloai}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/bao/{{idchuyenmuc}}-3">{{tenchuyenmuc1}}</a>
-                <a class="dropdown-item" href="/bao/{{idchuyenmuc}}">{{tenchuyenmuc}}</a>
+                <a class="dropdown-item" href="/bao/chuyenmuc/{{idchuyenmuc}}-3">{{tenchuyenmuc1}}</a>
+                <a class="dropdown-item" href="/bao/chuyenmuc/{{idchuyenmuc}}">{{tenchuyenmuc}}</a>
               </div>
             </li>
             {{/each}}
           </ul>
-          <form class="form-inline my-2 my-lg-0 mr-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Gõ báo muốn tìm" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0 mr-auto" action="/bao/timkiem" method="POST">
+            <input class="form-control mr-sm-2" type="text" id="txttimkiem" name="timkiem">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Báo</button>
           </form>
+          <form id="frmLogout" action="/taikhoan/dangxuat" method="POST"></form>
           <ul class="navbar-nav">
             {{#if lcIsAuthenticated}}
+            <a class="btn btn-outline-success my-2 my-sm-0" href="/bao/vietbao">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Viết Bài
+              </a>
             <li class="nav-item dropdown">
+                
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Xin Chào, <b>{{lcAuthUser.ten}}</b>!
               </a>

@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-header"> 
+        <h4>Danh Sách Tìm Kiếm</h4>
+    </div>
+    {{#if this.empty}}
+    <div class="card-body">
+        <h5>Kết quả bạn tìm không có!!!!!</h5>
+    </div>
+    {{else}}
+    <div class="card-body">
+        <div class="row">
+            {{#each this.bao}}
+            <div class="col-sm-6 mb-3">
+                <div class="card h-100">
+                <form action="chitiet" method="post">
+                    <div class="card-body ">
+                        <img src="/public/imgs/bao/{{idbao}}/anh.jpg" alt="{{tieude}}" title="{{tieude}}" class="card-img-top">
+                        <h4 class="card-title">{{tieude}}</h4>
+                        <p class="card-text">{{tenchuyenmuc}}</p>
+                        <p class="card-text">{{noidung}}</p>
+                        <input type="hidden" class="form-control" id="txtidbao" name="idbao" readonly value="{{idbao}}">
+                        <p class="card-text float-right">{{ngaydang}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-lg btn-success">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            Xem Báo
+                        </button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            {{/each}} 
+        </div>
+    </div>
+    {{/if}}
+    <div class="card-footer text-muted">
+        <p>Nhóm Sinh Viên KHTN</p>
+    </div>
+</div>

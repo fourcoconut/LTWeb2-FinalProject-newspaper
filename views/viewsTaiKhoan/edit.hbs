@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bao Nha Lam</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+        <a class="navbar-brand" href="/admin">Trang Chủ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+          <a class="nav-link" href="/admin/TaiKhoan">Tài Khoản <span class="sr-only">(current)</span></a>
+        </li>
+            <li class="nav-item active">
+          <a class="nav-link" href="/admin/bao">Báo <span class="sr-only">(current)</span></a>
+        </li>
+              <li class="nav-item active">
+          <a class="nav-link" href="/admin/baoCD">Báo Chờ Duyệt <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin/CMuc">Chuyên Mục <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin/TheLoai">Thể Loại <span class="sr-only">(current)</span></a>
+        </li>
+          </ul>
+          
+        </div>
+      </nav>
+      <div class="card">
+  <div class="card-header">
+    <h4>Sữa Loại Tài Khoản</h4>
+  </div>
+  <div class="card-body">
+    <form method="POST">
+        <div class="form-group">
+        <label for="txtidtk">ID Tài Khoản</label>
+        <input type="text" class="form-control" id="txtidtk" name="idtk" readonly value="{{this.taikhoan.idtk}}">
+      </div>
+      <div class="form-group">
+    <label for="exampleFormControlSelect1">Chọn Loại Tài Khoản</label>
+    
+    <select class="form-control" id="txtloaitk" name="loaitk">
+      {{#each this.LoaiTK}}
+      <option>{{idloaitk}}</option>
+      {{/each}}
+    </select>
+    
+  </div>
+      <a class="btn btn-success" href="/admin/TaiKhoan" role="button" title="Back to List">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+        Trở Về
+      </a>
+      <button type="submit" class="btn btn-danger" formaction="/admin/TaiKhoan/del">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        Xóa
+      </button>
+      <button type="submit" class="btn btn-primary" formaction="/admin/TaiKhoan/update">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Lưu
+      </button>
+    </form>
+  </div>
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>
+      <div class="container-fluid mt-4">
+          <div class="row">
+            
+          </div>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
