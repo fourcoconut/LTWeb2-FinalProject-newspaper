@@ -1,0 +1,50 @@
+{{#section 'js'}}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: '#txtnoidungchinhcd',
+    height: 450,
+    plugins: 'paste image link autolink lists table media',
+    menubar: false,
+    toolbar: [
+      'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright | forecolor backcolor | table link image media',
+    ],
+  });
+</script>
+{{/section}}
+
+<form method="post">
+  <div class="card">
+    <div class="card-header">
+      <a class="navbar-brand">Viết Báo</a>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-outline-success" href="/bao/taianh">
+        <i class="fa fa-camera-retro" aria-hidden="true"></i>
+        Tải Ảnh Hoặc ViDeo
+      </a>
+      <div class="form-group my-2">
+        <label for="txttieudecd">Tiêu Đề Bài Báo</label>
+        <input type="text" class="form-control" id="txttieudecd" name="tieudecd" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="txtnoidungcd">Tóm Tắt Nội Dung</label>
+        <input type="text" class="form-control" id="txtnoidungcd" name="noidungcd" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="txtnguoiviet">Tên Tác Giả</label>
+        <input type="text" class="form-control" id="txtnguoiviet" name="nguoiviet" autofocus>
+      </div>
+      <div class="form-group">
+        <label for=""></label>
+        <textarea name="noidungchinhcd" id="txtnoidungchinhcd" class="form-control" cols="30" rows="10"></textarea>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-lg btn-success btn-block">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Gửi
+      </button>
+    </div>
+  </div>
+</form>

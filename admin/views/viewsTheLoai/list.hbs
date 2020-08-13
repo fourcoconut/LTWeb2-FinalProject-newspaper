@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <h4>Thể Loại</h4>
+        <a class="btn btn-outline-success" href="/admin/TheLoai/add" role="button">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Thêm Thể Loại
+        </a>
+    </div>
+    {{#if this.empty}}
+    <div class="card-body">
+        <h5>Không có dữ liệu.</h5>
+    </div>
+    {{else}}
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên Thể Loại</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this.theloai}}
+            <tr>
+                <td scope="row">{{idtheloaibao}}</td>
+                <td>{{tentheloai}}</td>
+                <td class="text-right">
+                    <a class="btn btn-primary btn-sm" href="/admin/TheLoai/edit/{{idtheloaibao}}" role="button" title="Chỉnh sữa">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{/if}}
+    <div class="card-footer text-muted">
+        <p>Nhóm Sinh Viên KHTN</p>
+    </div>
+</div>

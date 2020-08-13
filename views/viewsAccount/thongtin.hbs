@@ -1,0 +1,37 @@
+{{#section 'css'}}
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+
+{{#section 'js'}}
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+
+{{/section}}
+
+<div class="card">
+  <div class="card-header">
+    <h4>Thông Tin</h4>
+  </div>
+  <div class="card-body">
+    <form method="POST">
+      <div class="form-group">
+        <label for="txtUsername">Tên người dùng: {{lcAuthUser.ten}}</label>
+      </div>
+      <div class="form-group">
+        <label for="txtConfirm">Gmail: {{lcAuthUser.email}}</label>
+      </div>
+      <button id="frmRegister" type="submit" class="btn btn-primary" formaction="/taikhoan/thongtin/doima">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Đổi Mật Mã
+      </button>
+      <button type="submit" class="btn btn-primary" formaction="/taikhoan/thongtin/chinhsua">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Thay Đổi Thông Tin
+      </button>
+    </form>
+  </div>
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>
