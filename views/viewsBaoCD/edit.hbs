@@ -1,0 +1,124 @@
+{{#section 'js'}}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: '#txtnoidungchinhcd',
+    height: 450,
+    plugins: 'paste image link autolink lists table media',
+    menubar: false,
+    toolbar: [
+      'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright | forecolor backcolor | table link image media',
+    ],
+  });
+</script>
+{{/section}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bao Nha Lam</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+        <a class="navbar-brand" href="/admin">Trang Chủ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+          <a class="nav-link" href="/admin/TaiKhoan">Tài Khoản <span class="sr-only">(current)</span></a>
+        </li>
+            <li class="nav-item active">
+          <a class="nav-link" href="/admin/bao">Báo <span class="sr-only">(current)</span></a>
+        </li>
+              <li class="nav-item active">
+          <a class="nav-link" href="/admin/baoCD">Báo Chờ Duyệt <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin/CMuc">Chuyên Mục <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin/TheLoai">Thể Loại <span class="sr-only">(current)</span></a>
+        </li>
+          </ul>
+          
+        </div>
+      </nav>
+      <div class="card">
+  <div class="card-header">
+    <h4>Duyệt Báo</h4>
+  </div>
+  <div class="card-body">
+    <form method="POST">
+        <div class="form-group">
+        <label for="txtidbao">ID Báo Chờ Duyệt</label>
+        <input type="text" class="form-control" id="txtidbao" name="idbao" readonly value="{{this.baochoduyet.idbaocd}}">
+      </div>
+        <div class="form-group">
+        <label for="txttieude">Tên Tiêu Đề</label>
+        <input type="text" class="form-control" id="txttieude" name="tieude" readonly value="{{this.baochoduyet.tieudecd}}">
+      </div>
+      <div class="form-group">
+        <label for="txtnoidung">Tóm Tắt Nội Dung</label>
+        <input type="text" class="form-control" id="txtnoidung" name="noidung" readonly value="{{this.baochoduyet.noidungcd}}">
+      </div>
+      <div class="form-group">
+        <label for="txttacgia">Tác Giả</label>
+        <input type="text" class="form-control" id="txttacgia" name="tacgia" readonly value="{{this.baochoduyet.nguoiviet}}">
+      </div>
+      <div class="form-group">
+    <label for="exampleFormControlSelect1">Chọn Chuyên Mục</label>
+    
+    <select class="form-control" id="txtidchuyenmuc" name="idchuyenmuc">
+      {{#each this.ChuyenMuc}}
+      <option>{{idchuyenmuc}}</option>
+      {{/each}}
+    </select>
+    <label for="exampleFormControlSelect1">Chọn Loại Báo</label>
+    
+    <select class="form-control" id="txtloaibao" name="loaibao">
+      <option>Thường</option>
+      <option>VIP</option>
+    </select>
+    </div>
+    <div class="form-group">
+        <label for=""></label>
+        <textarea name="noidungchinh" id="txtnoidungchinh" class="form-control" cols="30" rows="10">
+          {{{this.baochoduyet.noidungchinhcd}}}
+        </textarea>
+    </div>
+  
+      <a class="btn btn-success" href="/admin/baoCD" role="button" title="Back to List">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+        Trở Về
+      </a>
+      <button type="submit" class="btn btn-danger" formaction="/admin/baoCD/del">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        Xóa
+      </button>
+      <button type="submit" class="btn btn-primary" formaction="/admin/baoCD/update">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Duyệt
+      </button>
+    </form>
+  </div>
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>
+      <div class="container-fluid mt-4">
+          <div class="row">
+            
+          </div>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>

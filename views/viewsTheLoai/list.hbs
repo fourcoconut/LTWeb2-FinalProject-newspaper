@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bao Nha Lam</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+        <a class="navbar-brand" href="/admin">Trang Chủ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+          <a class="nav-link" href="/admin/TaiKhoan">Tài Khoản <span class="sr-only">(current)</span></a>
+        </li>
+            <li class="nav-item active">
+          <a class="nav-link" href="/admin/bao">Báo <span class="sr-only">(current)</span></a>
+        </li>
+              <li class="nav-item active">
+          <a class="nav-link" href="/admin/baoCD">Báo Chờ Duyệt <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin/CMuc">Chuyên Mục <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin/TheLoai">Thể Loại <span class="sr-only">(current)</span></a>
+        </li>
+          </ul>
+          
+        </div>
+      </nav>
+      <div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <h4>Thể Loại</h4>
+        <a class="btn btn-outline-success" href="/admin/TheLoai/add" role="button">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Thêm Thể Loại
+        </a>
+    </div>
+    {{#if this.empty}}
+    <div class="card-body">
+        <h5>Không có dữ liệu.</h5>
+    </div>
+    {{else}}
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên Thể Loại</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this.theloai}}
+            <tr>
+                <td scope="row">{{idtheloaibao}}</td>
+                <td>{{tentheloai}}</td>
+                <td class="text-right">
+                    <a class="btn btn-primary btn-sm" href="/admin/TheLoai/edit/{{idtheloaibao}}" role="button" title="Chỉnh sữa">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{/if}}
+    <div class="card-footer text-muted">
+        <p>Nhóm Sinh Viên KHTN</p>
+    </div>
+</div>
+      <div class="container-fluid mt-4">
+          <div class="row">
+            
+          </div>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>

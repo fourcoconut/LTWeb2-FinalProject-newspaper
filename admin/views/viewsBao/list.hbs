@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Báo</h4>
+    </div>
+    {{#if this.empty}}
+    <div class="card-body">
+        <h5>Không có dữ liệu.</h5>
+    </div>
+    {{else}}
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên Bài Báo</th>
+                <th scope="col">Ngày Đăng</th>
+                <th scope="col">Tác Giả</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this.bao}}
+            <tr>
+                <td scope="row">{{idbao}}</td>
+                <td>{{tieude}}</td>
+                <td>{{ngaydang}}</td>
+                <td>{{tacgia}}</td>
+                <td class="text-right">
+                    <a class="btn btn-primary btn-sm" href="/admin/bao/edit" role="button" title="Chỉnh sữa">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="#" role="button" title="Xóa">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{/if}}
+    <div class="card-footer text-muted">
+        <p>Nhóm Sinh Viên KHTN</p>
+    </div>
+</div>

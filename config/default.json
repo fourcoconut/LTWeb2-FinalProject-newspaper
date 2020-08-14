@@ -1,0 +1,17 @@
+{
+  "mysql": {
+    "host": "localhost",
+    "port": 3306,
+    "user": "root",
+    "password": "",
+    "database": "qlbanhang",
+    "connectionLimit": 50
+  },
+  "pagination": {
+    "limit": 4,
+    "limitTC": 10
+  },
+  "authentication": {
+    "saltRounds": 8
+  }
+}
