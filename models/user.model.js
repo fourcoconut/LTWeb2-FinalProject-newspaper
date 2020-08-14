@@ -19,5 +19,15 @@ module.exports = {
         return null;
   
       return rows[0];
-    }
+    },
+    singleByGmailName: async function (email) {
+      const rows = await db.load(`select * from ${TBL_USER} where email = '${email}'`);
+      if (rows.length === 0)
+        return null;
+  
+      return rows[0];
+    },
+    single: function (id) {
+        return db.load(`select * from ${TBL_USER} where idtk = ${id}`);
+      }
 }

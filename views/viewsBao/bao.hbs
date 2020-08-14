@@ -12,16 +12,56 @@
             {{#each this.bao}}
             <div class="col-sm-6 mb-3">
                 <div class="card h-100">
-                    <div class="card-body">
-                        <img src="/public/imgs/bao/{{idbao}}/cho-pug-mat-xe.jpg" alt="{{tieude}}" title="{{tieude}}" class="card-img-top">
+                <form action="chitiet" method="post">
+                    <div class="card-body ">
+                        <img src="/public/imgs/bao/{{idbao}}/anh.jpg" alt="{{tieude}}" title="{{tieude}}" class="card-img-top">
                         <h4 class="card-title">{{tieude}}</h4>
+                        <p class="card-text">{{tenchuyenmuc}}</p>
                         <p class="card-text">{{noidung}}</p>
-                        <p class="card-text float-right">{{tacgia}}</p>
+                        <input type="hidden" class="form-control" id="txtidbao" name="idbao" readonly value="{{idbao}}">
+                        <p class="card-text float-right">{{ngaydang}}</p>
                     </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-lg btn-success">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            Xem Báo
+                        </button>
+                    </div>
+                </form>
                 </div>
             </div>
-            {{/each}}
+            {{/each}} 
         </div>
+        <nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item {{#unless trangdau}}disabled{{/unless}}">
+      <a class="page-link" href="?page={{trangtruoc}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    {{#each this.trang}}
+    {{#if tranghientai}}
+        <li class="page-item active">
+            <span class="page-link">
+                {{value}}
+                <span class="sr-only">(current)</span>
+            </span>
+        </li>
+    {{else}}
+        <li class="page-item">
+            <a class="page-link" href="?page={{value}}">{{value}}</a>
+        </li>
+    {{/if}}
+    {{/each}}
+    <li class="page-item {{#unless trangcuoi}}disabled{{/unless}}">
+      <a class="page-link" href="?page={{trangsau}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
     </div>
     {{/if}}
     <div class="card-footer text-muted">

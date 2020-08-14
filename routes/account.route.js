@@ -14,7 +14,7 @@ router.get('/dangnhap', async function (req, res){
     });
 })
 
-router.post('/logout', restrict, function (req, res) {
+router.post('/dangxuat', restrict, function (req, res) {
   req.session.isAuthenticated = false;
   req.session.authUser = null;
   res.redirect(req.headers.referer);
@@ -72,6 +72,30 @@ router.get('/thongtin/doimatkhau', restrict, async function (req, res){
   res.render('viewsAccount/doimatkhau');
 })
 
+router.post('/thongtin/doima', restrict, async function (req, res){
+  res.redirect('/taikhoan/thongtin/doimatkhau');
+})
+
+router.get('/thongtin/chinhsua', restrict, async function (req, res){
+    const rows = await userModel.single(req.session.authUser.idtk);
+    if (rows.length === 0)
+        return res.send('Invalid parameter.');
+
+    const thongtin = rows[0];
+    res.render('viewsAccount/chinhsua', {thongtin});
+})
+
+router.post('/thongtin/chinhsua', restrict, async function (req, res){
+  
+  res.redirect('/taikhoan/thongtin/chinhsua');
+})
+
+router.post('/thongtin/chinhsua/update', restrict, async function (req, res){
+  await userModel.patch(req.body);
+  res.redirect('/taikhoan/thongtin');
+  
+})
+
 
 router.post('/thongtin/doimatkhau', async function (req, res) {
   const user = await userModel.singleByUserName(req.session.authUser.taikhoan);
@@ -99,5 +123,23 @@ router.post('/thongtin/doimatkhau', async function (req, res) {
 router.get('/thongbao', restrict, async function (req, res){
   res.render('viewsAccount/thongbao');
 })
+
+router.get('/kiemtra/user', async function (req, res){
+  const user = await userModel.singleByUserName(req.query.user);
+  if (!user) {
+    return res.json(true);
+  }
+  res.json(false);
+})
+
+router.get('/kiemtra/gmail', async function (req, res){
+  const email = await userModel.singleByGmailName(req.query.email);
+  if (!email) {
+    return res.json(true);
+  }
+  res.json(false);
+})
+
+
 
 module.exports = router;
