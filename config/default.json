@@ -2,12 +2,16 @@
   "mysql": {
     "host": "localhost",
     "port": 3306,
-    "user": "root",
-    "password": "",
+    "user": "tudua",
+    "password": "thuan1999",
     "database": "qlbanhang",
     "connectionLimit": 50
   },
   "pagination": {
-    "limit": 6
+    "limit": 4,
+    "limitTC": 10
+  },
+  "authentication": {
+    "saltRounds": 8
   }
 }

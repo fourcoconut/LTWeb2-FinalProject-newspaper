@@ -1,0 +1,49 @@
+{{!-- {{#section 'js'}}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: '#txtnoidungbinhluan',
+    height: 450,
+    plugins: 'paste image link autolink lists table media',
+    menubar: false,
+  });
+</script>
+{{/section}} --}}
+ 
+<div class="card">
+  <div class="card-header">
+    <h4>Đọc Báo</h4>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{{this.ctbao.tieude}}</h4>
+    <h6 class="card-text">{{this.ctbao.tenchuyenmuc}}</h6>
+    <img src="/public/imgs/bao/{{this.ctbao.idbao}}/anhto.jpg" alt="{{this.ctbao.tieude}}" title="{{this.ctbao.tieude}}" class="card-img-top">
+    <p class="card-text">{{{this.ctbao.noidungchinh}}}</p>
+    <h6 class="card-text mb-5">{{this.ctbao.ngaydang}}</h6> 
+    {{#if lcIsAuthenticated}} 
+    <form method="post" >
+    <h4>Viết Bình luận</h4>
+        <input type="hidden" class="form-control" id="txtidbao" name="idbao" readonly value="{{this.ctbao.idbao}}">
+        <input type="hidden" class="form-control" id="txtidtk" name="idtk" readonly value="{{lcAuthUser.idtk}}">
+        <label for="txtnoidungbinhluan">Nội dung</label>
+        <textarea name="noidungbinhluan" id="txtnoidungbinhluan" class="form-control" cols="3" rows="2"></textarea>
+      <button type="submit" class="btn btn-danger">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Gửi bình luận
+      </button>
+      </form> 
+    {{/if}}
+    <h4 class="card-text mt-5">Nội Dung Bình Luận</h4>
+    {{#each this.binhluan}}
+    
+    <h6 class="card-text mt-5">{{ten}}</h6>
+    <p class="card-text">{{noidungbinhluan}}</p>
+    <h6 class="card-text">{{ngaydang}}</h6>
+    {{/each }}                    
+  </div>
+  
+  
+  <div class="card-footer text-muted">
+    <p>Nhóm Sinh Viên KHTN</p>
+  </div>
+</div>

@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bao Nha Lam</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{{_sections.css}}}
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
@@ -14,49 +15,60 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav">
+            {{#each lcTLoai}}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Thể Thao
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{tentheloai}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Trong Nước</a>
-                <a class="dropdown-item" href="#">Nước Ngoài</a>
+                <a class="dropdown-item" href="/bao/chuyenmuc/{{idchuyenmuc}}-3">{{tenchuyenmuc1}}</a>
+                <a class="dropdown-item" href="/bao/chuyenmuc/{{idchuyenmuc}}">{{tenchuyenmuc}}</a>
               </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Kinh Doanh
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Nông Sản</a>
-                  <a class="dropdown-item" href="#">Thủy Sản</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Công Nghệ
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Điện Thoại</a>
-                  <a class="dropdown-item" href="#">Game</a>
-                </div>
-              </li>
+            {{/each}}
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Gõ báo muốn tìm" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0 mr-auto" action="/bao/timkiem" method="POST">
+            <input class="form-control mr-sm-2" type="text" id="txttimkiem" name="timkiem">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Báo</button>
           </form>
+          <form id="frmLogout" action="/taikhoan/dangxuat" method="POST"></form>
+          <ul class="navbar-nav">
+            {{#if lcIsAuthenticated}}
+            <a class="btn btn-outline-success my-2 my-sm-0" href="/bao/vietbao">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Viết Bài
+              </a>
+            <li class="nav-item dropdown">
+                
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Xin Chào, <b>{{lcAuthUser.ten}}</b>!
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/taikhoan/thongtin">Thông Tin</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript: $('#frmLogout').submit()">Thoát</a>
+              </div>
+            </li>
+            {{else}}
+            <li class="nav-item">
+                <a class="nav-link" href="/taikhoan/dangnhap">
+                Đăng Nhập
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/taikhoan/dangky">
+                Đăng Ký
+              </a>
+            </li>
+            {{/if}}
+          </ul>
         </div>
       </nav>
       {{{body}}}
-      <div class="container-fluid mt-4">
-          <div class="row">
-            
-          </div>
-      </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    {{{_sections.js}}}
 </body>
 </html>

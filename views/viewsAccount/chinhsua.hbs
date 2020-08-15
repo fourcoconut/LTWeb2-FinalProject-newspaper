@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Sữa Thông Tin</h4>
+  </div>
+  <div class="card-body">
+    <form method="POST" action="/taikhoan/thongtin/chinhsua/update">
+        <div class="form-group">
+        <input type="hidden" class="form-control" id="txtidtk" name="idtk" readonly value="{{this.thongtin.idtk}}">
+      </div>
+      <div class="form-group">
+        <label for="txtten">Tên Người Dùng</label>
+        <input type="text" class="form-control" id="txtten" name="ten" autofocus value="{{this.thongtin.ten}}">
+      </div>
+      <div class="form-group">
+        <label for="txtemail">Gmail</label>
+        <input type="text" class="form-control" id="txtemail" name="email" autofocus value="{{this.thongtin.email}}">
+      </div>
+      <a class="btn btn-success" href="/taikhoan/thongtin" role="button" title="Back to List">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+        Trở Về
+      </a>
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Lưu
+      </button>
+    </form>
+  </div>
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>
